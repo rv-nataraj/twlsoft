@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+var i=0;
+function myFunction() {
+  var x = document.getElementById("fname").value;
+  document.getElementById("demo").innerHTML = x;
+  if (x=="asdf;lkj")
+  {
+  	i=i+1;
+    document.getElementById("fname").value="";
+    document.getElementById("count").innerHTML=i;
+  }
+  else if (x.includes("asdf;lkj"))
+  {
+  	document.getElementById("fname").value="";
+    document.getElementById("gcount").innerText=document.getElementById("gcount").innerText+i+",";
+    i=0;
+    document.getElementById("count").innerHTML=i;
+      
+  }
+  
+}
+</script>
+</head>
+<body>
+
+<p>Welcome to Type Writing Learning Software</p>
+
+Your Text: <textarea id="fname" onkeyup="myFunction()"></textarea>
+
+<p>typed text: <span id="demo"></span></p>
+<h1>count: <span id="count"></span></h1>
+<h4><p>global count: <span id="gcount"></span></p><h4>
+
+
+
+
+</body>
+</html>
