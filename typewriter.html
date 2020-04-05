@@ -1,39 +1,88 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+.select_join {
+  width: 170px;
+  height: 28px;
+  overflow: hidden;
+  background: url('http://s24.postimg.org/lyhytocf5/dropdown.png') no-repeat right #FEFEFE;
+  border: #FEFEFE 5px solid;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0px 0px 10px 1px #FFFEFE;
+  box-shadow: inset 0px 0px 10px 1px #FEFEFE;
+}
+.select_join select {
+  background: transparent;
+  width: 170px;
+  font-size:17pt;
+  color:grey;
+  border: 0;
+  border-radius: 0;
+  height: 28px;
+  -webkit-appearance: none;
+}
+.select_join select:focus {
+  outline: none;
+}
+</style>
+
 <script>
 var i=0;
 function myFunction() {
   var x = document.getElementById("fname").value;
   document.getElementById("demo").innerHTML = x;
-  if (x=="asdf;lkj")
+  if (x==document.getElementById("textptn").value)
   {
   	i=i+1;
     document.getElementById("fname").value="";
     document.getElementById("count").innerHTML=i;
   }
-  else if (x.includes("asdf;lkj"))
+  else if (x.includes(document.getElementById("textptn").value))
   {
   	document.getElementById("fname").value="";
     document.getElementById("gcount").innerText=document.getElementById("gcount").innerText+i+",";
     i=0;
-    document.getElementById("count").innerHTML=i;
-      
+    document.getElementById("count").innerHTML=i;  
   }
   
+}
+
+function lessonchange()
+{
+	document.getElementById("lessontext").innerHTML=document.getElementById("textptn").value;
 }
 </script>
 </head>
 <body>
 
-<p>Welcome to Type Writing Learning Software</p>
+<div style="background-color:pink;height:50px; text-align:center; font-size:17pt">
+<p>Welcome to Type Writing Classroom</p>
+</div>
 
+<div class="select_join" style="margin-left:15px">
+<select id="textptn" onchange="lessonchange()">
+<option value="">Select Lesson</option>
+  <option value="asdf;lkj">Lesson 1</option>
+  <option value="asdf ;lkj ">Lesson 2</option>
+  <option value="qwerty">Lesson 3</option>
+  <option value="qwertypoiuy">Lesson 4</option>
+</select><br><br>
+</div>
+
+<div style="background-color:green;height:50px; text-align:center; font-size:17pt">
+<h1> <span id="lessontext"></span></h1>
+</div>
+
+<br></br>
+<div>
 Your Text: <textarea id="fname" onkeyup="myFunction()"></textarea>
 
 <p>typed text: <span id="demo"></span></p>
 <h1>count: <span id="count"></span></h1>
 <h4><p>global count: <span id="gcount"></span></p><h4>
-
+</div>
 
 
 
