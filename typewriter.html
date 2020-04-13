@@ -29,6 +29,7 @@
 </style>
 
 <script>
+var stime=new Date();
 var i=0;
 function myFunction() {
   var x = document.getElementById("fname").value;
@@ -38,19 +39,28 @@ function myFunction() {
   	i=i+1;
     document.getElementById("fname").value="";
     document.getElementById("count").innerHTML=i;
+	 var etime=new Date();
+	 document.getElementById("timedif").innerText=document.getElementById("timedif").innerText+((etime-stime)/1000)+" Seconds, ";
+	 stime=new Date();
   }
   else if (x.includes(document.getElementById("textptn").value))
   {
   	document.getElementById("fname").value="";
     document.getElementById("gcount").innerText=document.getElementById("gcount").innerText+i+",";
+	 var etime=new Date();
+	 document.getElementById("timedif").innerText=document.getElementById("timedif").innerText+((etime-stime)/1000)+" Seconds, ";
     i=0;
     document.getElementById("count").innerHTML=i;  
+	 stime=new Date();
   }
   
 }
 
 function lessonchange()
 {
+document.getElementById("count").innerHTML="";  
+document.getElementById("gcount").innerHTML="";  
+document.getElementById("timedif").innerHTML="";  
 	document.getElementById("lessontext").innerHTML=document.getElementById("textptn").value;
 }
 </script>
@@ -98,6 +108,7 @@ Your Text: <textarea id="fname" onkeyup="myFunction()" rows="2" cols="30" style=
 <p>typed text: <span id="demo"></span></p>
 <h1>count: <span id="count"></span></h1>
 <h4><p>global count: <span id="gcount"></span></p><h4>
+<h4><p>time: <span id="timedif"></span></p><h4>
 </div>
 
 
